@@ -33,3 +33,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+Assets/Level 1/ReflectionProbe-0.exr.meta
+Assets/Level 1/ReflectionProbe-0.exr
+Assets/Level 1/LightingData.asset.meta
+Assets/Level 1/LightingData.asset
