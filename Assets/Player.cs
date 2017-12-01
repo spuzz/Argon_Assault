@@ -12,6 +12,8 @@ public class Player : MonoBehaviour {
     [SerializeField] float positionYawFactor = 5f;
     [SerializeField] float controlPitchFactor = -15f;
     [SerializeField] float controlRollFactor = -15f;
+    [SerializeField] float xRange = 6f;
+    [SerializeField] float yRange = 4f;
     float xOffset;
     float yOffset;
     float xThrow;
@@ -41,12 +43,12 @@ public class Player : MonoBehaviour {
         xThrow = CrossPlatformInputManager.GetAxis("Horizontal");
         xOffset = (xThrow * xSpeed) * Time.deltaTime;
         float rawNewXPos = transform.localPosition.x + xOffset;
-        float xpos = Mathf.Clamp(rawNewXPos, -5.5f, 5.5f);
+        float xpos = Mathf.Clamp(rawNewXPos, -xRange, xRange);
 
         yThrow = CrossPlatformInputManager.GetAxis("Vertical");
         yOffset = (yThrow * ySpeed) * Time.deltaTime;
         float rawNewYPos = transform.localPosition.y + yOffset;
-        float ypos = Mathf.Clamp(rawNewYPos, -3f, 3f);
+        float ypos = Mathf.Clamp(rawNewYPos, -yRange, yRange);
 
         transform.localPosition = new Vector3(xpos, ypos, transform.localPosition.z);
     }
