@@ -22,9 +22,13 @@ public class Player : MonoBehaviour {
     void Start () {
 		
 	}
-	
-	// Update is called once per frame
-	void Update ()
+
+    private void OnTriggerEnter(Collider other)
+    {
+        print("Player hit something");
+    }
+    // Update is called once per frame
+    void Update ()
     {
         ProcessTranslation();
         ProcessRotation();

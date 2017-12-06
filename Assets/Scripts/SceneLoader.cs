@@ -3,23 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MusicPlayer : MonoBehaviour {
+public class SceneLoader : MonoBehaviour {
 
-    void Awake()
-    {
-        DontDestroyOnLoad(transform.gameObject);
-    }
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         Invoke("LoadFirstScene", 2);
-	}
+    }
 
     void LoadFirstScene()
     {
         SceneManager.LoadScene("Level 1");
     }
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update () {
 		
 	}
 }
