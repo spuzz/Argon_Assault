@@ -4,34 +4,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class Player : MonoBehaviour {
+public class PlayerController : MonoBehaviour {
 
-    [Tooltip("in ms^-1")][SerializeField] float xSpeed = 6f;
-    [Tooltip("in ms^-1")] [SerializeField] float ySpeed = 4f;
+    [Header("General")]
+    [Tooltip("in ms^-1")][SerializeField] float xControlSpeed = 4f;
+    [Tooltip("in ms^-1")] [SerializeField] float yControlSpeed = 4f;
+    [Tooltip("in m")] [SerializeField] float xRange = 7f;
+    [Tooltip("in m")] [SerializeField] float yRange = 4f;
+
+    [Header("Screen-position Based")]
     [SerializeField] float positionPitchFactor = -5f;
     [SerializeField] float positionYawFactor = 5f;
+
+    [Header("Control-Throw Based")]
     [SerializeField] float controlPitchFactor = -15f;
     [SerializeField] float controlRollFactor = -15f;
-    [SerializeField] float xRange = 6f;
-    [SerializeField] float yRange = 4f;
+
     float xOffset;
     float yOffset;
     float xThrow;
     float yThrow;
-    // Use this for initialization
-    void Start () {
-		
-	}
 
-    private void OnTriggerEnter(Collider other)
-    {
-        print("Player hit something");
-    }
+    bool isControlEnabled = true;
     // Update is called once per frame
     void Update ()
     {
-        ProcessTranslation();
-        ProcessRotation();
+        if(isControlEnabled == true)
+        {
+            ProcessTranslation();
+            ProcessRotation();
+        }
+
+    }
+
+    void OnPlayerDeath()
+    {
+        isControlEnabled = false;
     }
 
     private void ProcessRotation()
@@ -45,12 +53,12 @@ public class Player : MonoBehaviour {
     private void ProcessTranslation()
     {
         xThrow = CrossPlatformInputManager.GetAxis("Horizontal");
-        xOffset = (xThrow * xSpeed) * Time.deltaTime;
+        xOffset = (xThrow * xControlSpeed) * Time.deltaTime;
         float rawNewXPos = transform.localPosition.x + xOffset;
         float xpos = Mathf.Clamp(rawNewXPos, -xRange, xRange);
 
         yThrow = CrossPlatformInputManager.GetAxis("Vertical");
-        yOffset = (yThrow * ySpeed) * Time.deltaTime;
+        yOffset = (yThrow * yControlSpeed) * Time.deltaTime;
         float rawNewYPos = transform.localPosition.y + yOffset;
         float ypos = Mathf.Clamp(rawNewYPos, -yRange, yRange);
 
