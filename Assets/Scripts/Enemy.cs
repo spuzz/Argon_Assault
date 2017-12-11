@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour {
     {
         scoreBoard.ScoreHit(scorePerHit);
         hits--;
-        if(hits <= 0)
+        if(hits <= 1)
         {
             KillEnemy();
         }
