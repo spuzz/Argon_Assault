@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 13c98ca359b4aa54aae848e274271348
+timeCreated: 1512997528
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Venus Rising
+  fontNames:
+  - Venus Rising
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
